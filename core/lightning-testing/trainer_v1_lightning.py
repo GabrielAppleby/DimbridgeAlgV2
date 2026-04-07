@@ -1,5 +1,5 @@
 import pytorch_lightning as pl
-from dimbridge_lightning import DimBridgeModule
+from dimbridge_v1_lightning import DimBridgeModule
 from torch.utils.data import DataLoader, TensorDataset
 
 

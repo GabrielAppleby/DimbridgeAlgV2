@@ -14,7 +14,6 @@ def create_predicates(mu, a, mean, scale, feature_min, feature_max):
             ci[0] <= feature_min[feature_idx] and ci[1] >= feature_max[feature_idx]
         )
         if should_include:
-            predicates.append(dict(dim=feature_idx, interval=ci))
+            predicates.append({"dim": feature_idx, "interval": ci})
     for p in predicates:
         print(p)
-    print("next")

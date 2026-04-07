@@ -1,9 +1,9 @@
 import torch
 
-from dataloader import get_cali_housing_example
-from predicates import create_predicates
-from preprocessing import standardize_data
-from trainer import optimize_weights
+from core.data.dataloader import get_cali_housing_example
+from core.trainers.trainer_v1 import optimize_weights
+from core.utils.predicates import create_predicates
+from core.utils.preprocessing import standardize_data
 
 
 def main():

@@ -7,10 +7,10 @@ import numpy as np
 import pandas as pd
 import torch
 
-from dataloader import get_cali_housing_example
-from metrics import score
-from preprocessing import standardize_data
-from trainer import optimize_weights, predict
+from core.data.dataloader import get_cali_housing_example
+from core.trainers.trainer_v1 import optimize_weights, predict
+from core.utils.metrics import score
+from core.utils.preprocessing import standardize_data
 
 
 def main(n_seeds: int = 10, n_iter: int = 500, out_dir: str = "results") -> None:

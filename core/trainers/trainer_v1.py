@@ -7,7 +7,7 @@ def predict(x, inverse_radius_param, mu_param):
     return 1 / (1 + ((inverse_radius_param.abs() * (x - mu_param).abs()).pow(b)).sum(1))
 
 
-def optimize_weights(x, labels, n_iter=1000, inverse_radius_init=0.4):
+def optimize_weights(x, labels, n_iter=500, inverse_radius_init=0.4):
     n_points, n_features = x.shape
 
     mu_init = x[labels].mean(0)
