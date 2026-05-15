@@ -61,11 +61,11 @@ def sample_numeric_predicates(num_predicates_avg, num_predicates_max, num_numeri
             predicates_dict[name].index = [a for b in [[f'numeric_{i}_{j}' for j in range(num_numeric_bins_max)] for i in range(num_numeric_max)] for a in b]
     return pd.DataFrame(predicates_dict), all_clauses
 
-def sample_numeric_data(num_numeric_avg, num_numeric_max, num, rate, clauses):
+def sample_numeric_data(num_numeric_avg, num_numeric_max, num, clauses):
     all_cols = [f'numeric_{i}' for i in range(num_numeric_max)]
     if len(clauses)>0:
         data = pd.DataFrame({k:np.random.choice([a for b in [range(vi[0],vi[1]+1) for vi in v] for a in b],size=num) for k,v in clauses.items()})
-        cols = [col for col in all_cols if col not in data_in.columns]
+        cols = [col for col in all_cols if col not in data.columns]
         data[cols] = np.random.choice(range(num_numeric_bins_max), size=(num,len(cols)))
         return data.loc[:,all_cols]
     else:
@@ -74,6 +74,6 @@ def sample_numeric_data(num_numeric_avg, num_numeric_max, num, rate, clauses):
 def sample_binary_data(num_binary_avg, num_binary_max, num, predicate):
     data = pd.concat([predicate for i in range(num)], axis=1).T
     data.index = range(len(data))
-    cols = data_in.columns[data.isnull().any()]
+    cols = data.columns[data.isnull().any()]
     data[cols] = np.random.binomial(1, p=num_binary_avg/num_binary_max, size=(num, len(cols)))   
     return data
